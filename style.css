@@ -1,0 +1,213 @@
+/* Configuració general */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1b1d; /* Fosc suau amb matís càlid */
+    color: #f3e9ed;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    margin: 0;
+}
+
+/* Contenidor principal estil "App" */
+main {
+    background-color: #2b2528;
+    width: 100%;
+    max-width: 400px;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+header h1 {
+    margin: 0;
+    color: #f7d6e0; /* Rosa molt clar */
+    font-size: 26px;
+}
+
+header p {
+    color: #d8b4bc;
+}
+
+/* Disseny de les seccions */
+section {
+    background: #362f33;
+    padding: 15px;
+    border-radius: 12px;
+    margin-top: 15px;
+    text-align: center;
+}
+
+section h2, section h3 {
+    margin-top: 0;
+    color: #f7d6e0;
+}
+
+/* Estils dels camps de text */
+input {
+    width: 100%;
+    padding: 10px;
+    margin: 6px 0;
+    border: 1px solid #524349;
+    background-color: #231e21;
+    color: #ffffff;
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+
+input::placeholder {
+    color: #9c8b91;
+}
+
+/* Configurar botons visuals generals */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* 1. Botó d'entrenar (+ Registrar Entrenament): Rosa Clar Càlid */
+section button:first-child {
+    background-color: #f4acb7;
+    color: #4a2831;
+}
+
+section button:first-child:hover {
+    background-color: #eea1ad;
+}
+
+/* 2. Botó de congelar la ràtxa (Avui no puc): Rosa Empolvat / Nude */
+section button:last-child {
+    background-color: #d8b4bc;
+    color: #3d242a;
+}
+
+section button:last-child:hover {
+    background-color: #ccaaaf;
+}
+
+/* 3. Botó de guardar l'exercici al formulari: Rosa Malva */
+#formulari-exercici button {
+    background-color: #f2a2ba;
+    color: #401925;
+}
+
+#formulari-exercici button:hover {
+    background-color: #e895ad;
+}
+
+/* Botó de netejar l'historial */
+#boto-netejar {
+    background-color: #4f3f45 !important;
+    color: #f7d6e0 !important;
+}
+
+/* Llista de l'historial i exercicis */
+#llista-historial {
+    list-style-type: none;
+    padding: 0;
+    text-align: left;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+#llista-historial li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    margin-bottom: 6px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+/* Registre d'entrenament (Fons rosa suau) */
+.registre-entrenament {
+    background-color: #423238;
+    color: #fce1e8;
+    border-left: 4px solid #f4acb7;
+}
+
+/* Registre de congelat */
+.registre-congelat {
+    background-color: #3d352e;
+    color: #f5e3d3;
+    border-left: 4px solid #d8b4bc;
+}
+
+/* Botó de la paperera petit */
+.boto-esborrar {
+    width: auto !important;
+    padding: 4px 8px !important;
+    margin: 0 0 0 10px !important;
+    background-color: transparent !important;
+    border: none !important;
+    font-size: 16px !important;
+    cursor: pointer;
+}
+
+.boto-esborrar:hover {
+    background-color: rgba(244, 172, 183, 0.2) !important;
+}
+
+/* Estils del Calendari */
+.calendari-grella-dies {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+    font-weight: bold;
+    margin-top: 12px;
+    margin-bottom: 5px;
+    color: #d8b4bc;
+    font-size: 13px;
+}
+
+.calendari-grella {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 5px;
+}
+
+.dia-cal {
+    padding: 8px 2px;
+    background-color: #2b2528;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    min-height: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.dia-cal:hover {
+    background-color: #4f3f45;
+}
+
+.dia-cal.buit {
+    background-color: transparent;
+    cursor: default;
+}
+
+/* Indicadors de colors per al calendari */
+.dia-cal.entrenat {
+    border: 2px solid #f4acb7;
+    background-color: #423238;
+}
+
+.dia-cal.congelat {
+    border: 2px solid #d8b4bc;
+    background-color: #3d352e;
+}
+
+.dia-cal.avui {
+    font-weight: bold;
+    text-decoration: underline;
+}

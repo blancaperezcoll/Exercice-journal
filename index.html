@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FitStreak</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>FitStreak 🏋️‍♀️</h1>
+        <p>Objectiu: 4 dies a la setmana</p>
+    </header>
+
+    <main>
+        <!-- Secció de la Ràtxa -->
+        <section>
+            <h2>Ràtxa Setmanal</h2>
+            <p>Completat: <strong id="comptador-dies">0</strong> / 4 dies</p>
+        </section>
+
+        <!-- Botons -->
+        <section>
+            <button>+ Registrar Entrenament</button>
+            <button>Avui no puc (Congelar)</button>
+        </section>
+        <!-- Formulari de registre detallat -->
+        <section id="seccio-formulari">
+            <h3>Detalls de l'entrenament</h3>
+            <form id="formulari-exercici">
+                <input type="date" id="data-exercici" required>
+                
+                <!-- Desplegable per triar el tipus d'activitat -->
+                <select id="tipus-activitat" style="width: 100%; padding: 10px; margin: 6px 0; border-radius: 8px; background: #231e21; color: white; border: 1px solid #524349;">
+                    <option value="forca">🏋️ Força (Sèries i Reps)</option>
+                    <option value="cardio">🏃 Cardio / Altres (Temps i Distància)</option>
+                </select>
+
+                <!-- Input amb suggeriments / selecció d'exercicis guardats -->
+                <input type="text" id="nom-exercici" placeholder="Nom (ex: Flexions o Córrer)" list="llista-exercicis-guardats" required autocomplete="off">
+                <datalist id="llista-exercicis-guardats"></datalist>
+
+                <!-- Camps per a Força -->
+                <div id="camps-forca">
+                    <input type="number" id="series" placeholder="Sèries (ex: 3)" min="1">
+                    <input type="number" id="repeticions" placeholder="Repeticions (ex: 10)" min="1">
+                    <input type="number" id="pes" placeholder="Pes en kg (opcional)" min="0">
+                </div>
+
+                <!-- Camps per a Cardio / Exercicis per temps -->
+                <div id="camps-cardio" style="display: none;">
+                    <input type="number" id="series-cardio" placeholder="Sèries (ex: 3)" min="1">
+                    <input type="number" id="temps" placeholder="Temps (ex: 30 o 45)" min="1" required>
+                    <select id="unitat-temps" style="width: 100%; padding: 10px; margin: 6px 0; border-radius: 8px; background: #231e21; color: white; border: 1px solid #524349;">
+                        <option value="segons">Segons (s)</option>
+                        <option value="minuts">Minuts (min)</option>
+                    </select>
+                    <input type="number" id="distancia" placeholder="Distància en km (opcional)" step="0.1" min="0">
+                </div>
+
+                <button type="submit">Guardar exercici</button>
+            </form>
+        </section>
+
+        <!-- Llista on aniran sortint els exercicis guardats -->
+        <section>
+            <h3>Exercicis d'avui</h3>
+            <ul id="llista-exercicis"></ul>
+        </section>
+        <!-- Secció del Gràfic -->
+        <section>
+            <h3>Progrés de Pes (kg) 📈</h3>
+            <canvas id="graficProgres"></canvas>
+        </section>
+        <!-- Secció del Calendari -->
+        <section id="seccio-calendari">
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <button id="cal-anterior" style="width: auto; padding: 4px 10px; margin: 0;">←</button>
+                <h3 id="cal-titol" style="margin: 0;">Mes Any</h3>
+                <button id="cal-seguent" style="width: auto; padding: 4px 10px; margin: 0;">→</button>
+            </div>
+            
+            <div class="calendari-grella-dies">
+                <span>Dl</span><span>Dt</span><span>Dc</span><span>Dj</span><span>Dv</span><span>Ds</span><span>Dg</span>
+            </div>
+            
+            <div id="calendari-dies" class="calendari-grella"></div>
+            
+            <div id="cal-detalls" style="margin-top: 10px; font-size: 13px; text-align: left; color: #f7d6e0;">
+                <p><em>Fes clic en un dia per veure el detall.</em></p>
+            </div>
+        </section>
+        <!-- Secció de l'Historial -->
+        <section id="seccio-historial">
+            <h3>Historial de Registres 📊</h3>
+            <ul id="llista-historial"></ul>
+            <button id="boto-netejar" style="background-color: #95a5a6; font-size: 14px; margin-top: 10px;">Netejar Historial</button>
+        </section>
+    </main>
+
+    <!-- Connectem el fitxer de JavaScript -->
+     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
