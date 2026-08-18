@@ -1,23 +1,22 @@
 {
   "short_name": "FitStreak",
-  "name": "FitStreak - Diari d'Entrenament",
+  "name": "FitStreak App",
   "id": "/fitstreak/",
-  "start_url": "./index.html",
+  "start_url": "./index.html?utm_source=pwa",
   "background_color": "#1a1618",
   "theme_color": "#1a1618",
   "display": "standalone",
-  "display_override": ["standalone", "minimal-ui"],
   "orientation": "portrait",
   "scope": "./",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/2964/2964514.png",
+      "src": "./icon.png",
       "sizes": "192x192",
       "type": "image/png",
       "purpose": "any"
     },
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/2964/2964514.png",
+      "src": "./icon.png",
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
