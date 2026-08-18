@@ -286,12 +286,15 @@ botoCongelar.addEventListener('click', () => {
 formulari.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const dataSeleccionada = inputData.value ? new Date(inputData.value).toLocaleDateString() : new Date().toLocaleDateString();
-    const nom = document.getElementById('nom-exercici').value.trim();
+    const dataSeleccionada = inputData && inputData.value ? new Date(inputData.value).toLocaleDateString() : new Date().toLocaleDateString();
+    const inputNom = document.getElementById('nom-exercici');
+    const nom = inputNom ? inputNom.value.trim() : '';
     const tipus = selectTipus ? selectTipus.value : 'forca';
     
+    if (!nom) return;
+
     // Guardar el nom de l'exercici a la llista de suggeriments
-    if (nom && !exercicisGuardats.includes(nom)) {
+    if (exercicisGuardats && !exercicisGuardats.includes(nom)) {
         exercicisGuardats.push(nom);
         localStorage.setItem('exercicisGuardatsFitStreak', JSON.stringify(exercicisGuardats));
     }
@@ -300,17 +303,26 @@ formulari.addEventListener('submit', (e) => {
     let pesValor = 0;
 
     if (tipus === 'forca') {
-        const series = document.getElementById('series').value;
-        const repeticions = document.getElementById('repeticions').value;
-        pesValor = document.getElementById('pes').value;
+        const elemSeries = document.getElementById('series');
+        const elemReps = document.getElementById('repeticions');
+        const elemPes = document.getElementById('pes');
+
+        const series = elemSeries ? elemSeries.value : '';
+        const repeticions = elemReps ? elemReps.value : '';
+        pesValor = elemPes ? elemPes.value : 0;
         
         detall = `🏋️ ${dataSeleccionada} - ${nom}: ${series}s x ${repeticions}r`;
         if (pesValor) detall += ` (${pesValor}kg)`;
     } else {
-        const seriesCardio = document.getElementById('series-cardio').value;
-        const temps = document.getElementById('temps').value;
-        const unitat = document.getElementById('unitat-temps') ? document.getElementById('unitat-temps').value : 'minuts';
-        const distancia = document.getElementById('distancia').value;
+        const elemSeriesCardio = document.getElementById('series-cardio');
+        const elemTemps = document.getElementById('temps');
+        const elemUnitat = document.getElementById('unitat-temps');
+        const elemDistancia = document.getElementById('distancia');
+
+        const seriesCardio = elemSeriesCardio ? elemSeriesCardio.value : '';
+        const temps = elemTemps ? elemTemps.value : '';
+        const unitat = elemUnitat ? elemUnitat.value : 'minuts';
+        const distancia = elemDistancia ? elemDistancia.value : '';
         
         const textUnitat = unitat === 'segons' ? 's' : ' min';
         
@@ -334,7 +346,7 @@ formulari.addEventListener('submit', (e) => {
     localStorage.setItem('historialFitStreak', JSON.stringify(historial));
 
     formulari.reset();
-    inputData.valueAsDate = new Date();
+    if (inputData) inputData.valueAsDate = new Date();
     
     if (campsForca && campsCardio) {
         campsForca.style.display = 'block';
